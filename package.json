@@ -1,0 +1,19 @@
+{
+  "name": "evergreen-quote-api-delivery",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env src/index.js",
+    "dev": "node --env-file=.env --watch src/index.js",
+    "seed": "node --env-file=.env src/seed.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.19.0",
+    "mongoose": "^8.5.0",
+    "graphql": "^16.9.0",
+    "graphql-http": "^1.22.0",
+    "ruru": "^2.0.0"
+  }
+}
