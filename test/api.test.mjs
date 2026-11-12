@@ -104,3 +104,12 @@ test("POST /api/quote rejects an unknown coverage type with a 400", async () => 
   });
   assert.equal(res.status, 400);
 });
+
+test("POST /api/quote rejects a missing coverage amount with a 400", async () => {
+  const res = await fetch(`${base}/api/quote`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ type: "home", age: 40 }),
+  });
+  assert.equal(res.status, 400);
+});

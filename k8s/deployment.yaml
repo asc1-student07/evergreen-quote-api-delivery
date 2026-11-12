@@ -1,0 +1,42 @@
+# k8s/deployment.yaml - run the Evergreen Quote API on Kubernetes (provided).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: evergreen-quote-api
+  labels:
+    app: evergreen-quote-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: evergreen-quote-api
+  template:
+    metadata:
+      labels:
+        app: evergreen-quote-api
+    spec:
+      containers:
+        - name: evergreen-quote-api
+          image: evergreen-quote-api:1.0
+          ports:
+            - containerPort: 3000
+          # The same names the app reads from .env on your VM. In the cluster,
+          # the platform injects them; the code does not change.
+          env:
+            - name: MONGODB_URI
+              value: mongodb://mongo:27017/evergreen
+            - name: SERVICE_NAME
+              value: Evergreen Quote API
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 5

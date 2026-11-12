@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evergreen Insurance - Get a Quote</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">Evergreen Insurance</div>
+      <nav class="site-nav">
+        <a href="#">Coverage</a>
+        <a href="#">Claims</a>
+        <a href="#">About</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <h1>Coverage that grows with you</h1>
+        <p>Get an instant estimate, no account required.</p>
+      </section>
+
+      <section class="quote-form-section">
+        <form id="quote-form" class="quote-form" novalidate>
+          <h2>Build your quote</h2>
+
+          <label for="coverage-type">Coverage type</label>
+          <select id="coverage-type" name="coverage-type">
+            <option value="auto">Auto</option>
+            <option value="home">Home</option>
+            <option value="life">Life</option>
+          </select>
+
+          <label for="age">Your age</label>
+          <input id="age" name="age" type="number" min="18" max="100" value="35" />
+
+          <label for="coverage-amount">Coverage amount ($)</label>
+          <input
+            id="coverage-amount"
+            name="coverage-amount"
+            type="number"
+            min="10000"
+            step="5000"
+            value="50000"
+          />
+
+          <!-- The live estimate updates here as the form changes -->
+          <div id="estimate" class="estimate" aria-live="polite">
+            <span class="estimate-label">Estimated monthly premium</span>
+            <span id="estimate-amount" class="estimate-amount">-</span>
+          </div>
+
+          <!-- Validation and status messages appear here -->
+          <p id="message" class="message" role="status"></p>
+
+          <button type="submit" class="primary-btn">Save this quote</button>
+        </form>
+
+        <aside class="recent-quotes">
+          <h2>Recent quotes</h2>
+          <ul id="recent-list" class="recent-list">
+            <li class="loading">Loading recent quotes…</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Evergreen Insurance. Sample training project.</p>
+    </footer>
+
+    <!-- Loaded as an ES module so import/export works -->
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
